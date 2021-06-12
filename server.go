@@ -221,15 +221,18 @@ func (s *Server) RunTCPServer() error {
 				}
 			}
 			if err := s.Negotiate(c); err != nil {
+				log.Println("Negotiate err 1")
 				log.Println(err)
 				return
 			}
 			r, err := s.GetRequest(c)
 			if err != nil {
+				log.Println("GetRequest err 2")
 				log.Println(err)
 				return
 			}
 			if err := s.Handle.TCPHandle(s, c, r); err != nil {
+				log.Println("Handle.TCPHandle err 3")
 				log.Println(err)
 			}
 		}(c)
@@ -291,6 +294,7 @@ func (h *DefaultHandle) TCPHandle(s *Server, c *net.TCPConn, r *Request) error {
 	if r.Cmd == CmdConnect {
 		rc, err := r.Connect(c)
 		if err != nil {
+			log.Printf("r.Connect(c) error")
 			return err
 		}
 		defer rc.Close()

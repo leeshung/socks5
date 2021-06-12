@@ -7,7 +7,7 @@ import (
 	"net"
 	"net/http"
 
-	"github.com/txthinking/socks5"
+	"github.com/leeshung/socks5"
 )
 
 func ExampleServer() {
@@ -50,7 +50,7 @@ func ExampleClient_udp() {
 	if err != nil {
 		panic(err)
 	}
-	conn, err := c.Dial("udp", "8.8.8.8:53")
+	conn, err := c.Dial("udp", "180.76.76.76:53")
 	if err != nil {
 		panic(err)
 	}
